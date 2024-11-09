@@ -12,13 +12,28 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/eslint", "@nuxtjs/strapi"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxtjs/strapi",
+    "@nuxtjs/color-mode",
+    "@nuxt/icon",
+  ],
+
+  colorMode: {
+    classSuffix: "",
+    preference: "system",
+    fallback: "dark",
+  },
 
   strapi: {
-    url: process.env.STRAPI_URL || "http://localhost:1337",
+    url: process.env.NUXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337",
     prefix: "/api",
     version: "v5",
     cookie: {},
     cookieName: "strapi_jwt",
+  },
+
+  runtimeConfig: {
+    public: {},
   },
 });
